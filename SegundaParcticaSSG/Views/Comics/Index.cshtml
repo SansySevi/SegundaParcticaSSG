@@ -1,0 +1,22 @@
+﻿
+@model List<Comic>
+
+    <div class="container-fluid">
+        <h1>COMIC SQL Y ORACLE</h1>
+
+        <div style="display:flex">
+            @foreach (Comic comic in Model)
+       {
+           <div class="card" style="width: 18rem; margin:3px">
+              <img src="@comic.Imagen" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">@comic.Nombre</h5>
+                <p class="card-text">@comic.Descripcion</p>
+              </div>
+            </div>
+       }
+        </div>
+    </div>
+
+     
+
