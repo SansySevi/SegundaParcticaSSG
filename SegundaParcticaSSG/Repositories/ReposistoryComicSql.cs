@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 #region PROCEDIMIENTOS
 
-//CREATE PROCEDURE SP_INSERT_COMIC(@NOMBRE NVARCHAR(20), @IMAGEN NVARCHAR(50), @DESCRIPCION NVARCHAR(50))
+//CREATE PROCEDURE SP_INSERT_COMIC(@NOMBRE NVARCHAR(20), @IMAGEN NVARCHAR(100), @DESCRIPCION NVARCHAR(50))
 //AS
 // DECLARE @ID INT
 // SELECT @ID = MAX(IDCOMIC)+1 FROM COMICS
@@ -37,7 +37,7 @@ namespace SegundaParcticaSSG.Repositories
             adapter.Fill(this.tableComics);
         }
 
-
+        //METODO PARA INSERTAR UN COMIC
         public void CreateComic(string nombre, string imagen, string descripcion)
         {
             SqlParameter pamnom = new SqlParameter("@NOMBRE", nombre);
@@ -56,6 +56,7 @@ namespace SegundaParcticaSSG.Repositories
             this.com.Parameters.Clear();
         }
 
+        //METODO PARA GENERAR UNA LISTA DE COMIC
         public List<Comic> GetComics()
         {
             var consulta = from datos in this.tableComics.AsEnumerable()
@@ -63,6 +64,7 @@ namespace SegundaParcticaSSG.Repositories
 
             List<Comic> comics = new List<Comic>();
 
+            //RECORREMOS RESULTADOS DE LA CONSULTA, GENERAMOS LOS OBJETOS COMIC Y AÑADIMOS A LISTA
             foreach (var row in consulta)
             {
                 Comic comic = new Comic

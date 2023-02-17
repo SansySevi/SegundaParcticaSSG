@@ -1,7 +1,7 @@
 using SegundaParcticaSSG.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddTransient<IRepository, RepositoryComicsOracle>();
+builder.Services.AddTransient<IRepository, ReposistoryComicSql>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

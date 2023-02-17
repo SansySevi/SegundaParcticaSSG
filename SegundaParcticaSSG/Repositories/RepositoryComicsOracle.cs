@@ -36,7 +36,7 @@ namespace SegundaParcticaSSG.Repositories
             this.adapter.Fill(this.tableComics);
         }
 
-
+        //METODO PARA INSERTAR UN COMIC
         public void CreateComic(string nombre, string imagen, string descripcion)
         {
             OracleParameter pamnom = new OracleParameter(":NOMBRE", nombre);
@@ -55,6 +55,7 @@ namespace SegundaParcticaSSG.Repositories
             this.com.Parameters.Clear();
         }
 
+        //METODO PARA GENERAR UNA LISTA DE COMIC
         public List<Comic> GetComics()
         {
             var consulta = from datos in this.tableComics.AsEnumerable()
@@ -62,6 +63,7 @@ namespace SegundaParcticaSSG.Repositories
 
             List<Comic> comics = new List<Comic>();
 
+            //RECORREMOS RESULTADOS DE LA CONSULTA, GENERAMOS LOS OBJETOS COMIC Y AÑADIMOS A LISTA
             foreach (var row in consulta)
             {
                 Comic comic = new Comic
